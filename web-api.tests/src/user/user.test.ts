@@ -12,7 +12,6 @@ describe('Test User endpoints', () => {
   }
   const userPatch = {
     ...user,
-    displayName: 'test-user-patch',
     maxRecords: 10,
   }
   const tester = new ApiTester()
@@ -25,12 +24,12 @@ describe('Test User endpoints', () => {
 
     user._id = response.data._id as string
     userPatch._id = user._id
-    tester.routing = getRoutes(url, user._id, user.email)
+    tester.routing = getRoutes(url, user._id)
 
     expect(response.status).to.equal(201)
     expect(response.data).to.include(user)
   })
-  /*
+
   it('should test GET request successfully', async () => {
     const key = 'getUsers'
 
@@ -50,15 +49,6 @@ describe('Test User endpoints', () => {
     expect(response.data).to.include(userPatch)
   })
 
-  it('should test GET by email request successfully', async () => {
-    const key = 'getUserIdByEmail'
-
-    const response = await tester.get(key)
-
-    expect(response.status).to.equal(200)
-    expect(response.data.userId).to.equal(user._id)
-  })
-*/
   it('should test DELETE request successfully', async () => {
     const key = 'deleteUser'
 
