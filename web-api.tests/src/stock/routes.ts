@@ -1,22 +1,14 @@
-/*
 import { HttpMethod, IRouting } from 'atari-monk-api-tester-api'
 
-export const getRoutes = (
-  url: string,
-  userId?: string,
-  projectId?: string
-): IRouting => {
+export const getRoutes = (url: string, stockId?: string): IRouting => {
   return {
     baseUrl: url,
     endpoints: {
-      createUser: {
+      createUserStock: {
         method: HttpMethod.POST,
-        endpoint: 'users',
+        endpoint: 'stocks',
       },
-      createUserProject: {
-        method: HttpMethod.POST,
-        endpoint: 'projects/create',
-      },
+      /*
       getUserProjectById: {
         method: HttpMethod.GET,
         endpoint: `projects/${projectId}?userId=${userId}`,
@@ -33,15 +25,11 @@ export const getRoutes = (
         method: HttpMethod.PATCH,
         endpoint: `projects/${projectId}`,
       },
-      deleteUser: {
+      */
+      deleteStock: {
         method: HttpMethod.DELETE,
-        endpoint: `users/${userId}`,
-      },
-      deleteProject: {
-        method: HttpMethod.DELETE,
-        endpoint: `projects/${projectId}`,
+        endpoint: `stocks/${stockId}`,
       },
     },
   }
 }
-*/

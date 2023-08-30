@@ -1,60 +1,46 @@
-/*
 import { expect } from 'chai'
 import { ApiTester } from 'atari-monk-api-tester-lib'
 import { getRoutes } from './routes'
 
-describe('Test Project endpoints', () => {
-  const url = 'http://localhost:3000/api/v1'
-  const user = {
+describe('Test Stock endpoints', () => {
+  const port = '3001'
+  const url = `http://localhost:${port}/api/v1`
+  const stock = {
     _id: '',
-    email: 'test.user@gmail.com',
-    displayName: 'test-user',
-    maxRecords: 0,
-  }
-  const project = {
-    _id: '',
-    name: 'test-project',
+    stockId: '666',
+    width: 6,
+    depth: 6.6,
+    height: 66,
+    count: 66,
     description: 'test-description',
-    userId: '',
-    isVisible: true,
   }
-  const projectPatch = {
-    ...project,
-    name: 'test-project-patch',
+  const stockPatch = {
+    ...stock,
+    stockId: 999,
+    width: 9,
+    depth: 9.9,
+    height: 99,
+    count: 99,
     description: 'test-description-patch',
   }
   const tester = new ApiTester()
   tester.routing = getRoutes(url)
 
   it('should test POST request successfully', async () => {
-    const key = 'createUser'
-
-    const response = await tester.post(key, user)
-
-    user._id = response.data._id as string
-    project.userId = user._id
-    projectPatch.userId = user._id
-    tester.routing = getRoutes(url, user._id)
-
-    expect(response.status).to.equal(201)
-    expect(response.data).to.include(user)
-  })
-
-  it('should test POST request successfully', async () => {
     try {
-      const response = await tester.post('createUserProject', project)
+      const response = await tester.post('createUserStock', stock)
 
-      project._id = response.data._id as string
-      projectPatch._id = project._id
-      tester.routing = getRoutes(url, user._id, project._id)
+      stock._id = response.data._id as string
+      stockPatch._id = stock._id
+      tester.routing = getRoutes(url, stock._id)
 
       expect(response.status).to.equal(201)
-      expect(response.data).to.include(project)
+      expect(response.data).to.include(stock)
     } catch (error) {
       console.log(error)
     }
   })
-
+  /*
   it('should test GET request successfully', async () => {
     const key = 'getUserProjectById'
 
@@ -96,21 +82,12 @@ describe('Test Project endpoints', () => {
     expect(response.status).to.equal(200)
     expect(response.data).to.include(projectPatch)
   })
-
+*/
   it('should test DELETE request successfully', async () => {
-    const key = 'deleteUser'
-
-    const response = await tester.delete(key)
-
-    expect(response.status).to.equal(200)
-  })
-
-  it('should test DELETE request successfully', async () => {
-    const key = 'deleteProject'
+    const key = 'deleteStock'
 
     const response = await tester.delete(key)
 
     expect(response.status).to.equal(200)
   })
 })
-*/
