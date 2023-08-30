@@ -16,7 +16,7 @@ describe('Test Stock endpoints', () => {
   }
   const stockPatch = {
     ...stock,
-    stockId: 999,
+    stockId: '999',
     width: 9,
     depth: 9.9,
     height: 99,
@@ -40,49 +40,28 @@ describe('Test Stock endpoints', () => {
       console.log(error)
     }
   })
-  /*
+
   it('should test GET request successfully', async () => {
-    const key = 'getUserProjectById'
+    const key = 'getAllStocks'
 
     const response = await tester.get(key)
 
     expect(response.status).to.equal(200)
-    expect(response.data).to.include(project)
-  })
-
-  it('should test GET request successfully', async () => {
-    const key = 'getUserProjects'
-
-    const response = await tester.get(key)
-
-    expect(response.status).to.equal(200)
-    const projectDb = response.data.find((p: any) => {
-      return p._id === project._id
+    const stockDb = response.data.find((p: any) => {
+      return p._id === stock._id
     })
-    expect(projectDb).to.include(project)
-  })
-
-  it('should test GET request successfully', async () => {
-    const key = 'getAllProjects'
-
-    const response = await tester.get(key)
-
-    expect(response.status).to.equal(200)
-    const projectDb = response.data.find((p: any) => {
-      return p._id === project._id
-    })
-    expect(projectDb).to.include(project)
+    expect(stockDb).to.include(stock)
   })
 
   it('should test PATCH request successfully', async () => {
-    const key = 'updateProject'
+    const key = 'updateStock'
 
-    const response = await tester.patch(key, projectPatch)
+    const response = await tester.patch(key, stockPatch)
 
     expect(response.status).to.equal(200)
-    expect(response.data).to.include(projectPatch)
+    expect(response.data).to.include(stockPatch)
   })
-*/
+
   it('should test DELETE request successfully', async () => {
     const key = 'deleteStock'
 

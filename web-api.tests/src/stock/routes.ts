@@ -8,24 +8,14 @@ export const getRoutes = (url: string, stockId?: string): IRouting => {
         method: HttpMethod.POST,
         endpoint: 'stocks',
       },
-      /*
-      getUserProjectById: {
+      getAllStocks: {
         method: HttpMethod.GET,
-        endpoint: `projects/${projectId}?userId=${userId}`,
+        endpoint: 'stocks',
       },
-      getUserProjects: {
-        method: HttpMethod.GET,
-        endpoint: `projects/user?userId=${userId}`,
-      },
-      getAllProjects: {
-        method: HttpMethod.GET,
-        endpoint: 'projects/all',
-      },
-      updateProject: {
+      updateStock: {
         method: HttpMethod.PATCH,
-        endpoint: `projects/${projectId}`,
+        endpoint: `stocks/${stockId}`,
       },
-      */
       deleteStock: {
         method: HttpMethod.DELETE,
         endpoint: `stocks/${stockId}`,
